@@ -12,8 +12,8 @@ Transfer _transfer;
     return Card(
       child: ListTile(
         leading: Icon(Icons.monetization_on),
-        title: Text(_transfer.value),
-        subtitle: Text(_transfer.accountNumber),
+        title: Text(_transfer.value.toString()),
+        subtitle: Text(_transfer.accountNumber.toString()),
       ),
     );
   }

@@ -1,8 +1,8 @@
 
 class Transfer {
 
-  final String value;
-  final String accountNumber;
+  final double? value;
+  final int? accountNumber;
 
   Transfer(this.value, this.accountNumber);
 }

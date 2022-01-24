@@ -1,4 +1,4 @@
-import 'package:cursoflutter/transfer.dart';
+import 'package:cursoflutter/models/transfer.dart';
 import 'package:flutter/material.dart';
 
 class TransferItem extends StatelessWidget {

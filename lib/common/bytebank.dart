@@ -1,3 +1,4 @@
+import 'package:cursoflutter/screens/home/bytebank_home.dart';
 import 'package:cursoflutter/screens/transfer/list.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,8 @@ class ByteBank extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: TransferList(), //TransferList(),
+      home: BytebankHome(),
+      //home: TransferList(), //TransferList(),
     );
   }
 }

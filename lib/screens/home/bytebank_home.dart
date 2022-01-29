@@ -1,3 +1,4 @@
+import 'package:cursoflutter/components/home_button.dart';
 import 'package:flutter/material.dart';
 
 class BytebankHome extends StatelessWidget {
@@ -10,11 +11,35 @@ class BytebankHome extends StatelessWidget {
         title: Text('Dashboard'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network('https://cdn.pixabay.com/photo/2022/01/04/18/47/oil-6915740_960_720.jpg'),
-          Image.asset('images/bytebankExample.jpg'),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.network('https://cdn.pixabay.com/photo/2022/01/04/18/47/oil-6915740_960_720.jpg'),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset('assets/images/bytebank.jpg'),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              HomeButton(icon: Icons.people,
+                title: 'Contacts',
+              ),
+              HomeButton(icon: Icons.monetization_on_outlined,
+                title: 'Transfers',
+              ),
+              HomeButton(icon: Icons.arrow_forward_sharp,
+                title: 'Menu',
+              ),
+            ],
+          ),
         ],
       ),
     );
   }
 }
+
+

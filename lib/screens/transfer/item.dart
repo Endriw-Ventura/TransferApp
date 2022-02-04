@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class TransferItem extends StatelessWidget {
 
-Transfer _transfer;
+final Transfer _transfer;
 
  TransferItem(this._transfer);
 

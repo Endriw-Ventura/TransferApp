@@ -1,4 +1,6 @@
 import 'package:cursoflutter/components/home_button.dart';
+import 'package:cursoflutter/screens/contacts/list.dart';
+import 'package:cursoflutter/screens/transfer/list.dart';
 import 'package:flutter/material.dart';
 
 class BytebankHome extends StatelessWidget {
@@ -27,12 +29,15 @@ class BytebankHome extends StatelessWidget {
             children: [
               HomeButton(icon: Icons.people,
                 title: 'Contacts',
+                route: ContactsList(),
               ),
               HomeButton(icon: Icons.monetization_on_outlined,
                 title: 'Transfers',
+                route: TransferList(),
               ),
               HomeButton(icon: Icons.arrow_forward_sharp,
                 title: 'Menu',
+                route: ContactsList(),
               ),
             ],
           ),

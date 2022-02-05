@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'bytebank.dart';
-
-
+import 'common/bytebank.dart';
 void main() => runApp(ByteBank());
 
 

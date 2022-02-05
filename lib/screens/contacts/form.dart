@@ -1,9 +1,8 @@
-
+import 'package:cursoflutter/components/input_field_number.dart';
 import 'package:cursoflutter/components/input_field_text.dart';
+import 'package:cursoflutter/database/dao/contact/contact_dao.dart';
 import 'package:cursoflutter/models/contact.dart';
 import 'package:flutter/material.dart';
-
-import '../../components/input_field_number.dart';
 
 class ContactForm extends StatelessWidget {
 
@@ -15,7 +14,7 @@ class ContactForm extends StatelessWidget {
   final String _accountHint = '00000-0';
   final String _accountLabel = 'Account';
   final String _buttonSubmit = 'Submit';
-
+  final ContactDao _dao = ContactDao();
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +48,8 @@ class ContactForm extends StatelessWidget {
     final int? account = int.tryParse(_controllerValue.text);
     final String? name = _controllerAccount.text;
     if (name != null && account != null) {
-      final newContact = Contact(name, account);
-      Navigator.pop(context, newContact);
+      final newContact = Contact(0, name, account);
+      _dao.save(newContact).then((id) => Navigator.pop(context));
     }
   }
 }

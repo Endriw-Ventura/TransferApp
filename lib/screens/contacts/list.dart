@@ -1,49 +1,71 @@
+import 'package:cursoflutter/database/dao/contact/contact_dao.dart';
 import 'package:cursoflutter/models/contact.dart';
 import 'package:cursoflutter/screens/contacts/form.dart';
+import 'package:cursoflutter/screens/contacts/item.dart';
 import 'package:flutter/material.dart';
 
 class ContactsList extends StatefulWidget {
-  List<Contact> _contactList = [];
-
   @override
   _ContactsListState createState() => _ContactsListState();
 }
 
 class _ContactsListState extends State<ContactsList> {
+  final ContactDao _dao = ContactDao();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Contacts'),
       ),
-      body: ListView(
-       children:[
-         Card(
-           child: ListTile(
-             title: Text('example',
-             style: TextStyle(
-               fontSize: 24.0,
-             ),
-             ),
-             subtitle: Text('example'),
-           ),
-         ),
-       ],
-      ),
+      body: FutureBuilder<List<Contact>>(
+          future: _dao.findAll(),
+          builder: (context, snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+                break;
+
+              case ConnectionState.waiting:
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(),
+                      Text('Loading'),
+                    ],
+                  ),
+                );
+
+              case ConnectionState.active:
+                break;
+
+              case ConnectionState.done:
+                final List<Contact?> contacts = snapshot.data!;
+                return ListView.builder(
+                  itemBuilder: (context, index) {
+                    final Contact contact = contacts[index]!;
+                    return ContactItem(contact);
+                  },
+                  itemCount: contacts.length,
+                );
+            }
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Unknown Error'),
+                ],
+              ),
+            );
+          }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          final Future<Contact?> future = Navigator.push(context,
-            MaterialPageRoute(builder: (context) {
-              return ContactForm();
-            }),
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ContactForm(),
+            ),
+          ).then((value) => setState(() {}),
           );
-          future.then((createdContact){
-            if(createdContact != null){
-              setState(() {
-                widget._contactList.add(createdContact);
-              });
-            }
-          });
         },
         child: Icon(Icons.add),
       ),

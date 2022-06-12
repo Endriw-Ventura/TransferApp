@@ -1,4 +1,5 @@
 import 'package:cursoflutter/components/input_field_number.dart';
+import 'package:cursoflutter/models/contact.dart';
 import 'package:cursoflutter/models/transfer.dart';
 import 'package:flutter/material.dart';
 
@@ -47,7 +48,7 @@ class TransferForm extends StatelessWidget {
     final double? value = double.tryParse(_controllerValue.text);
     final int? account = int.tryParse(_controllerAccount.text);
     if (value != null && account != null) {
-      final newTransfer = Transfer(value, account);
+      final newTransfer = Transfer(value, Contact(0, account.toString(), account));
       Navigator.pop(context, newTransfer);
     }
   }

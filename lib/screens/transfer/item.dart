@@ -13,7 +13,7 @@ final Transfer _transfer;
       child: ListTile(
         leading: Icon(Icons.monetization_on),
         title: Text(_transfer.value.toString()),
-        subtitle: Text(_transfer.accountNumber.toString()),
+        subtitle: Text(_transfer.contact?.name != null ? _transfer.contact!.name.toString() : _transfer.contact!.accountNumber.toString()),
       ),
     );
   }

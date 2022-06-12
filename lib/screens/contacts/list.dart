@@ -1,3 +1,4 @@
+import 'package:cursoflutter/components/custom_progress_indicator.dart';
 import 'package:cursoflutter/database/dao/contact/contact_dao.dart';
 import 'package:cursoflutter/models/contact.dart';
 import 'package:cursoflutter/screens/contacts/form.dart';
@@ -25,15 +26,7 @@ class _ContactsListState extends State<ContactsList> {
                 break;
 
               case ConnectionState.waiting:
-                return Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircularProgressIndicator(),
-                      Text('Loading'),
-                    ],
-                  ),
-                );
+                return CustomProgressIndicator(message: 'Loading Contacts');
 
               case ConnectionState.active:
                 break;

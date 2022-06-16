@@ -1,9 +1,9 @@
 import 'package:cursoflutter/screens/home/dashboard.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 
-void main() {
-  runApp(BytebankApp());
-}
+void main() => runApp(BytebankApp());
+
 
 class BytebankApp extends StatelessWidget {
 
